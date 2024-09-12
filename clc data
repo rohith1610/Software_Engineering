@@ -1,0 +1,10 @@
+#this is the clc file 
+def clcdata():
+			self.txtMovie_ID.delete(0,END)
+			self.txtMovie_Name.delete(0,END)
+			self.txtRelease_Date.delete(0,END)
+			self.txtDirector.delete(0,END)
+			self.txtCast.delete(0,END)
+			self.txtBudget.delete(0,END)
+			self.txtRating.delete(0,END)
+			self.txtDuration.delete(0,END)
