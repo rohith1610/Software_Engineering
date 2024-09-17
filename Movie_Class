@@ -1,0 +1,18 @@
+#Hello Team!
+# I have worked on Main Fubnction.
+
+class Movie:
+	def __init__(self, root):
+		self.root=root
+		self.root.title("Online Movie Ticket Booking System")
+		self.root.geometry("1350x750+0+0")
+		self.root.config(bg="black")
+
+		Movie_Name=StringVar()
+		Movie_ID=StringVar()
+		Release_Date=StringVar()
+		Director=StringVar()
+		Cast=StringVar()
+		Budget=StringVar()
+		Duration=StringVar()
+		Rating=StringVar()
