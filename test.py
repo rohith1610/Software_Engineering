@@ -39,6 +39,7 @@ class Database:
     def get_users(self):
         return list(self.users.values())
 
+#Sheetal
 # Utility functions
 def validate_email(email):
     if "@" in email and "." in email.split('@')[-1]:
