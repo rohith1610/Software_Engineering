@@ -1,0 +1,6 @@
+#this is the add class movie
+def adddata():
+			if(len(Movie_ID.get())!=0):
+				MiniProject_Backend.AddMovieRec(Movie_ID.get(),Movie_Name.get(),Release_Date.get(),Director.get(),Cast.get(),Budget.get(),Duration.get(),Rating.get())
+				MovieList.delete(0,END)
+				MovieList.insert(END,(Movie_ID.get(),Movie_Name.get(),Release_Date.get(),Director.get(),Cast.get(),Budget.get(),Duration.get(),Rating.get()))

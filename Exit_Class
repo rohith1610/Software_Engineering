@@ -1,0 +1,9 @@
+#Hello Team!
+# I have implemented EXit Function!
+
+#Fuctions //This function is to wexit from the Portal
+		def iExit():
+			iExit=tkinter.messagebox.askyesno("Online Movie Ticket Booking System", "Are you sure???")
+			if iExit>0:
+				root.destroy()
+			return
