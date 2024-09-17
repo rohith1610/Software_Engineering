@@ -50,3 +50,64 @@ def validate_user_id(user_id):
     if isinstance(user_id, int) and user_id > 0:
         return True
     return False
+    
+
+# Main application Rohith
+def main():
+    user_manager = UserManager()
+
+    while True:
+        print("\nUser Management System")
+        print("1. Add User")
+        print("2. Delete User")
+        print("3. Update User")
+        print("4. List Users")
+        print("5. Exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == '1':
+            user_id = int(input("Enter User ID: "))
+            name = input("Enter Name: ")
+            email = input("Enter Email: ")
+
+            if validate_user_id(user_id) and validate_email(email):
+                user_manager.add_user(user_id, name, email)
+            else:
+                print("Invalid user ID or email.")
+       
+        elif choice == '2':
+            user_id = int(input("Enter User ID to delete: "))
+            if validate_user_id(user_id):
+                user_manager.delete_user(user_id)
+            else:
+                print("Invalid user ID.")
+       
+        elif choice == '3':
+            user_id = int(input("Enter User ID to update: "))
+            name = input("Enter new Name: ")
+            email = input("Enter new Email: ")
+
+            if validate_user_id(user_id) and validate_email(email):
+                user_manager.update_user(user_id, name, email)
+            else:
+                print("Invalid user ID or email.")
+
+        elif choice == '4':
+            users = user_manager.list_users()
+            if users:
+                for user in users:
+                    print(user)
+            else:
+                print("No users found.")
+
+        elif choice == '5':
+            print("Exiting...")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    main()
