@@ -1,0 +1,22 @@
+def add_numbers(num1, num2):
+    """
+    This function adds two numbers and returns the sum.
+    """
+    return num1 + num2
+
+def main():
+    """
+    This is the main function where the program's execution begins.
+    """
+    # Get input from the user
+    number1 = float(input("Enter the first number: "))
+    number2 = float(input("Enter the second number: "))
+
+    # Calculate the sum using the add_numbers function
+    sum = add_numbers(number1, number2)
+
+    # Display the result
+    print(f"The sum of {number1} and {number2} is: {sum}")
+
+if __name__ == "__main__":
+    main()
