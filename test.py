@@ -1,5 +1,4 @@
-#hello team this is test file!!!!!
-# User class - @vaishnavi
+# User class
 class User:
     def __init__(self, user_id, name, email):
         self.user_id = user_id
@@ -9,7 +8,8 @@ class User:
     def __str__(self):
         return f"User ID: {self.user_id}, Name: {self.name}, Email: {self.email}"
 
-# Database class to store users - @SasidharKadiyala
+
+# Database class to store users
 class Database:
     def __init__(self):
         self.users = {}
@@ -39,7 +39,6 @@ class Database:
     def get_users(self):
         return list(self.users.values())
 
-# David Coleman's
 # UserManager class to handle user-related operations
 class UserManager:
     def __init__(self):
@@ -58,7 +57,7 @@ class UserManager:
     def list_users(self):
         return self.db.get_users()
 
-#Sheetal
+
 # Utility functions
 def validate_email(email):
     if "@" in email and "." in email.split('@')[-1]:
@@ -69,9 +68,9 @@ def validate_user_id(user_id):
     if isinstance(user_id, int) and user_id > 0:
         return True
     return False
-    
 
-# Main application Rohith
+
+# Main application
 def main():
     user_manager = UserManager()
 
@@ -94,14 +93,14 @@ def main():
                 user_manager.add_user(user_id, name, email)
             else:
                 print("Invalid user ID or email.")
-       
+        
         elif choice == '2':
             user_id = int(input("Enter User ID to delete: "))
             if validate_user_id(user_id):
                 user_manager.delete_user(user_id)
             else:
                 print("Invalid user ID.")
-       
+        
         elif choice == '3':
             user_id = int(input("Enter User ID to update: "))
             name = input("Enter new Name: ")
