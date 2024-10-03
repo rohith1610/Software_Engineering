@@ -39,7 +39,6 @@ class Database:
     def get_users(self):
         return list(self.users.values())
 
-
 # UserManager class to handle user-related operations
 class UserManager:
     def __init__(self):
