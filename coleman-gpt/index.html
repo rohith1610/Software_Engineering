@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Movie Ticket Management</h1>
+
+    <h2>User Management</h2>
+    <form action="user/register.php" method="POST">
+        <h3>Register</h3>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <form action="user/login.php" method="POST">
+        <h3>Login</h3>
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" name="username" required>
+
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="password" required>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <h2>Contact Us</h2>
+    <a href="contact.php">Contact Page</a>
+
+    <h2>About Us</h2>
+    <a href="about.php">About Page</a>
+
+    <h2>Movie Ticket Management</h2>
+    <form id="ticketForm" action="manage_tickets.php" method="POST">
+        <label for="movie">Movie Title:</label>
+        <input type="text" id="movie" name="movie" required>
+
+        <label for="showtime">Showtime:</label>
+        <input type="datetime-local" id="showtime" name="showtime" required>
+
+        <label for="seats">Number of Tickets:</label>
+        <input type="number" id="seats" name="seats" min="1" required>
+
+        <input type="submit" value="Book Ticket">
+    </form>
+
+    <h2>Booked Tickets</h2>
+    <div id="ticketList">
+        <!-- This is where the ticket list will be populated -->
+    </div>
+
+    <script>
+        async function fetchTickets() {
+            const response = await fetch('fetch_tickets.php');
+            const tickets = await response.json();
+            const ticketList = document.getElementById('ticketList');
+            ticketList.innerHTML = '';
+
+            tickets.forEach(ticket => {
+                const div = document.createElement('div');
+                div.innerText = `${ticket.movie} - ${ticket.showtime} - ${ticket.seats} tickets`;
+                ticketList.appendChild(div);
+            });
+        }
+
+        fetchTickets();
+    </script>
+</body>
+</html>
