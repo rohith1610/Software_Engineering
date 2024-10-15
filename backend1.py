@@ -1,5 +1,3 @@
-
-
 "edited by Sheetal
 def SearchMovieData(Movie_ID="", Movie_Name="", Release_Date="", Director="", Cast="", Budget="", Duration="",
                     Rating=""):
