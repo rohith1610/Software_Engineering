@@ -1,0 +1,111 @@
+# Simple Movie Ticketing System in Python
+
+# Sample movie data
+movies = {
+    1: {"title": "Inception", "genre": "Sci-Fi", "duration": 148, "language": "English"},
+    2: {"title": "The Dark Knight", "genre": "Action", "duration": 152, "language": "English"},
+    3: {"title": "Interstellar", "genre": "Sci-Fi", "duration": 169, "language": "English"},
+    4: {"title": "Parasite", "genre": "Thriller", "duration": 132, "language": "Korean"},
+}
+
+# User data
+users = {}
+current_user = None
+
+
+def register():
+    global users
+    username = input("Enter username: ")
+    if username in users:
+        print("Username already exists. Try another one.")
+        return
+    password = input("Enter password: ")
+    users[username] = {"password": password, "bookings": []}
+    print(f"User {username} registered successfully!")
+
+
+def login():
+    global current_user
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    if username in users and users[username]["password"] == password:
+        current_user = username
+        print(f"Logged in as {username}")
+    else:
+        print("Invalid credentials")
+
+
+def view_movies():
+    print("\nAvailable Movies:")
+    for movie_id, movie in movies.items():
+        print(f"{movie_id}. {movie['title']} ({movie['genre']}, {movie['language']}) - {movie['duration']} min")
+
+
+def book_ticket():
+    if current_user is None:
+        print("You must log in to book tickets.")
+        return
+
+    view_movies()
+
+    movie_id = int(input("\nEnter the movie ID you want to book: "))
+    if movie_id not in movies:
+        print("Invalid movie selection.")
+        return
+
+    seats = int(input("Enter number of seats: "))
+    confirm = input(f"Do you want to book {seats} seats for {movies[movie_id]['title']}? (yes/no): ")
+
+    if confirm.lower() == 'yes':
+        users[current_user]['bookings'].append({
+            "movie": movies[movie_id]['title'],
+            "seats": seats
+        })
+        print(f"Successfully booked {seats} seats for {movies[movie_id]['title']}")
+    else:
+        print("Booking canceled")
+
+
+def view_bookings():
+    if current_user is None:
+        print("You must log in to view bookings.")
+        return
+
+    print(f"\n{current_user}'s Bookings:")
+    if not users[current_user]['bookings']:
+        print("No bookings found.")
+    else:
+        for booking in users[current_user]['bookings']:
+            print(f"- {booking['movie']}: {booking['seats']} seats")
+
+
+def main_menu():
+    while True:
+        print("\nMovie Ticketing System")
+        print("1. Register")
+        print("2. Login")
+        print("3. View Movies")
+        print("4. Book Ticket")
+        print("5. View Bookings")
+        print("6. Exit")
+
+        choice = input("Choose an option: ")
+        if choice == '1':
+            register()
+        elif choice == '2':
+            login()
+        elif choice == '3':
+            view_movies()
+        elif choice == '4':
+            book_ticket()
+        elif choice == '5':
+            view_bookings()
+        elif choice == '6':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid option, please try again.")
+
+
+if __name__ == "__main__":
+    main_menu()
